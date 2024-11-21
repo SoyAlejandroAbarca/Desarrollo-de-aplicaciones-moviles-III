@@ -1,0 +1,20 @@
+Codigo en Swift para detectar un numero par o impar al solicitar un numero dado.
+
+import Foundation
+
+// Función para determinar si un número es par o impar
+func esParOImpar(_ numero: Int) {
+    if numero % 2 == 0 {
+        print("\(numero) es un número par.")
+    } else {
+        print("\(numero) es un número impar.")
+    }
+}
+
+// Solicitar al usuario un número de entrada
+print("Por favor, ingresa un número:")
+if let entrada = readLine(), let numero = Int(entrada) {
+    esParOImpar(numero)
+} else {
+    print("Entrada no válida. Por favor, ingresa un número entero.")
+}
