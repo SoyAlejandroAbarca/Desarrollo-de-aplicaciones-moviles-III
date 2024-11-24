@@ -1,0 +1,65 @@
+//Estructura de control de inventario
+struct Articulo{ 
+ var nombre: String 
+ var cantidad: Int 
+}
+
+//Funciones para registrar, mostrar y consultar
+func registroArticulo() ->Articulo{
+    print("Registrar articulos")
+    print("Ingresa el nombre del articulo")
+    let nombre = readLine()!
+    print("Ingresa la cantidad de existencia")
+    let cantidad = Int(readLine()!)!
+    return Articulo(nombre: nombre, cantidad: cantidad)
+}
+
+func mostrarlistado(articulos:[Articulo]){
+    print("Listado de artículos")
+for(indice, articulo) in articulos.enumerated(){
+print("Articulo \(indice + 1): \(articulo.nombre)")
+print("Cantidad:  \(articulo.nombre)")
+    }
+}
+
+func consultadeArticulos(articulos: [Articulo]){
+    print("Consulta de artículos")
+    print("Ingresa el nombre del articulo a consultar")
+    let nombre = readLine()!
+    for(indice, articulo) in articulos.enumerated(){
+        if articulo.nombre == nombre{
+            print("Articulo  \(indice + 1):  \(articulo.nombre)")
+            print("Cantidad: \(articulo.cantidad)")
+            break
+        }
+    }
+}
+
+//Menu inicial
+var articulos: [Articulo] = []
+var opcion = 0
+repeat{
+    print("1. Registro")
+    print("2. Listado")
+    print("3. Consulta")
+    print("4. Salir")
+    print("Selecciona una opción")
+    opcion = (Int(readLine()!))!
+    switch opcion{
+        case 1:
+        print("Registro")
+        let nuevoArticulo = registroArticulo()
+        articulos.append(nuevoArticulo)
+        print("¡¡Articulo registrado exitosamente!!")
+        case 2:
+        print("Listado")
+        mostrarlistado(articulos: articulos)
+        case 3:
+        print("Consulta")
+        consultadeArticulos(articulos: articulos)
+        case 4:
+        print("Salir")
+        default:
+        print("Opcion no valida, vuelve a intentarlo")
+    }
+} while opcion != 4
